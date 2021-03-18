@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>rest风格controller测试</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        function doButton() {
+            $.ajax({
+                type: "DELETE",
+                url: "/student",
+                async:false,
+                success:function (data) {
+                    alert(data)
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<form action="/student" method="GET">
+    <input type="submit" value="get">
+</form>
+<form action="/student" method="POST">
+    <input type="submit" value="post">
+</form>
+<form action="/student" method="POST">
+    <input name="_method" value="put" type="hidden">
+    <input name="_m" value="put" type="hidden">
+    <input type="submit" value="put">
+</form>
+<form action="/student" method="POST">
+    <input name="_method" value="delete" type="hidden">
+    <input name="_m" value="delete" type="hidden">
+    <input type="submit" value="delete">
+</form>
+
+<button name="button1" onclick="doButton()">
+    确认
+</button>
+<a href="/student01/1/car/feng?age=18&like=hello&like=world">/student/{id}/car/{name}?age=18&like=hello&like=world</a>
+
+<form action="/submitInfo" method="POST">
+    用户名：<input name="userName"/></br>
+    邮箱：<input name="mail"/></br>
+    <input type="submit" value="提交">
+</form>
+
+<a href="/Student02Controller/doGet">@RequestAttribute测试</a><br/>
+<a href="/student01/do;name=feng;food=apple,car,dog">/student01/do;name=feng;food=apple,car,dog</a><br/>
+<a href="/student01/do;name=feng/do01;name=jirong">/student01/do;name=feng/do01;name=jirong</a>
+
+
+</body>
+</html>

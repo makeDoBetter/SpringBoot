@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.feng.account.mapper.AccountMapper">
+    <resultMap id="BaseMap" type="com.example.feng.account.dto.Account">
+        <id column="id" property="id" jdbcType="DECIMAL"/>
+        <result column="account_name" property="accountName" jdbcType="VARCHAR"/>
+        <result column="account_number" property="accountNumber" jdbcType="VARCHAR"/>
+        <result column="amount" property="amount" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAccount" parameterType="com.example.feng.account.dto.Account" resultMap="BaseMap">
+        SELECT
+            id,
+            account_name,
+            account_number,
+            amount
+        FROM
+            feng_account
+        WHERE 1 = 1
+        <if test="accountName != null and  accountName !=''">
+            AND account_name = #{accountName}
+        </if>
+        <if test="accountNumber != null and  accountNumber !=''">
+            AND account_number = #{accountNumber}
+        </if>
+    </select>
+
+    <update id="setAmount" parameterType="com.example.feng.account.dto.Account">
+        UPDATE feng_account
+        SET
+        amount = #{amount}
+        WHERE
+            id = #{id}
+    </update>
+
+</mapper>

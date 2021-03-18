@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rest风格controller测试</title>
+    <script>
+        function doButton() {
+            $.ajax({
+                type: "POST",
+                url: "/student",
+                async:false
+            });
+        }
+    </script>
+</head>
+<body>
+<form action="/student" method="get">
+    <input type="submit" value="get">
+</form>
+<form action="/student" method="post">
+    <input type="submit" value="post">
+</form>
+<form action="/student" method="post">
+    <input name="_method" value="put" type="hidden">
+    <input name="_m" value="put" type="hidden">
+    <input type="submit" value="put">
+</form>
+<form action="/student" method="post">
+    <input name="_method" value="delete" type="hidden">
+    <input name="_m" value="delete" type="hidden">
+    <input type="submit" value="delete">
+</form>
+
+<button name="button1" onclick="doButton()">
+    确认
+</button>
+
+
+</body>
+</html>

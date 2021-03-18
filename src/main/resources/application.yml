@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    name: feng_001
+    url: jdbc:mysql://localhost:3306/feng_001?serverTimezone=UTC #url
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  web:
+    resources:
+      #修改静态资源扫描路径，注意，由于这个可以同时配置多个路径，因此配置时属性是数组类别
+      #static-locations: [classpath:/index/]
+      #是否启用默认资源路径映射，即这个可以禁用所有静态资源规则
+      add-mappings: true
+      cache:
+        period: 10
+  mvc:
+    static-path-pattern: /**
+    hiddenmethod:
+      filter:
+        enabled: true
+server:
+  port: 8004
+mybatis:
+  mapper-locations: classpath:feng/*/mapper/*.xml
+  type-aliases-package: com.example.feng.user.dto
+
+redis:
+  database: 0
+  host:
+  post: 6379
+  password:
+  timeout: 0
+  pool:
+    max-active: 8
+    max-idle: 8
+    min-idle: 0
+    max-wait: -1
+
+car:
+  name: BMW
+  price: 100000
+
+#开启自动配置报告
+#debug: true
+
